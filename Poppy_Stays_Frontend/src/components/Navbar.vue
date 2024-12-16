@@ -1,7 +1,7 @@
 <template>
   <header>
     <!-- Navbar: Logo and Categories -->
-    <nav class="navbar navbar-light bg-light fixed-top">
+    <nav class="navbar navbar-light bg-dark fixed-top">
       <div class="container-fluid">
         <!-- Logo: Positioned in the top left corner -->
         <a class="navbar-brand logo-container" href="#">
@@ -94,65 +94,81 @@ export default {
 </script>
 
 <style scoped>
-/* Navbar takes full width and stays fixed at the top */
+/* Navbar background color */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: auto; /* Ensure it doesn't stretch across the full width */
-  z-index: 999; /* Keeps navbar on top */
-  background-color: #000000; /* Change this to your preferred background color */
+  width: auto;
+  z-index: 999;
+  background-color: #1c1c1c; /* Dark background */
   padding: 0;
-  border: 1px solid white
+  border-bottom: 2px solid #fff; /* Border for the navbar */
 }
 
-/* Logo container with margin to create space between logo and navbar items */
+/* Logo styling */
 .navbar .logo-container {
-  margin-right: 0px; /* Space between logo and navbar items */
+  margin-right: 0px;
 }
 
-/* Set the width of the logo */
 .navbar .logo {
   width: 150px;
   height: auto;
 }
 
-/* Main categories listed vertically under the logo */
+/* Categories listed vertically */
 .navbar-nav {
   display: flex;
-  flex-direction: column; /* Stack categories vertically */
-  margin-top: 10px; /* Space from the top of the page */
+  flex-direction: column;
+  margin-top: 10px;
 }
 
-/* Add border to categories */
+/* Styling for each category */
 .navbar-nav .category {
-  border: 2px solid white; /* Border around the category */
+  border: 2px solid white;
   padding: 10px 20px;
-  margin-bottom: 10px; /* Space between each category */
+  margin-bottom: 10px;
   border-radius: 5px;
-  width: auto; /* Don't take full width */
+  width: auto;
 }
 
-/* Dropdown menu style */
+/* Dropdown menu styling */
 .nav-item .dropdown-menu {
-  border: 1px solid #ddd; /* Border around dropdown */
-  border-radius: 5px; /* Rounded corners for dropdown */
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-/* Hover effect for dropdown items */
+/* Hover effect for dropdown items - same color as main categories */
 .nav-item .dropdown-menu .dropdown-item:hover {
-  background-color: #f8f9fa;
-  border-color: #bbb;
+  background-color: #343a40; /* Dark background for hover */
+  color: white !important; /* White text color */
+  border-color: #bbb; /* Border color on hover */
 }
 
-/* Dark background for selected menu */
+/* Dark background and white text for the selected menu */
 .nav-item.bg-dark .nav-link {
   background-color: #343a40 !important;
-  color: white;
+  color: white !important;
 }
 
-/* Content area should stay below the navbar */
-body {
-  padding-top: 150px; /* Adjust based on navbar height */
+/* Text color for navbar items */
+.nav-item .nav-link {
+  color: #e0e0e0 !important; /* Light text color */
+}
+
+/* Active state text color */
+.nav-item.bg-dark .nav-link {
+  color: white !important;
+}
+
+/* Dropdown items text color */
+.nav-item .dropdown-menu .dropdown-item {
+  color: #333 !important;
+}
+
+/* Apply hover effect for main categories */
+.nav-item .nav-link:hover {
+  background-color: #343a40; /* Same dark background for hover */
+  color: white !important; /* White text on hover */
 }
 </style>

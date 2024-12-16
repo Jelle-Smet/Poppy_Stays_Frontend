@@ -1,46 +1,46 @@
 <script setup>
-// Importing the Navigation Bar Component (or Header component)
-import NavigationBar from '@/components/Navigation_bar.vue'; // Adjust path if necessary
+// Import the Navigation Bar component
+import NavigationBar from '@/components/Navbar.vue'; // This imports the Navbar component, which will be used in the app layout.
 </script>
 
 <template>
   <div id="app">
-    <!-- Include the Navigation Bar Component at the top -->
-    <NavigationBar />
+    <!-- Navigation Bar, always at the top -->
+    <NavigationBar /> <!-- This renders the navigation bar component at the top of the page -->
 
-    <!-- Content Area where the different pages will render -->
-    <router-view /> <!-- Displays the content based on the current route -->
+    <!-- Content rendered based on the route -->
+    <router-view /> <!-- This tag will display different components based on the current route -->
   </div>
 </template>
 
 <style scoped>
 /* Scoped styles for App.vue */
 
-header {
-  line-height: 1.5;
+/* The main container for the entire application */
+#app {
+  display: flex; /* Use Flexbox layout */
+  flex-direction: column; /* Stack children vertically */
+  min-height: 100vh; /* Ensure the app takes up at least the full viewport height */
+  width: 100vw; /* Set the width of the app to 100% of the viewport width */
+  overflow-x: hidden; /* Prevent horizontal scrolling in the app */
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+/* Styles for the body element */
+body {
+  width: 100%; /* Ensure body element takes up full width */
+  margin: 0; /* Remove any default margin around the body */
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+/* The <main> element which contains the primary content of the page */
+main {
+  flex-grow: 1; /* Allow main content to expand and fill the remaining space */
+  width: 100%; /* Ensure the main content takes up the full width of the page */
+  box-sizing: border-box; /* Include padding in the width calculation, preventing overflow */
+  overflow-x: hidden; /* Prevent horizontal scrolling in the main content */
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+/* Additional padding for the #app container to account for the navbar height */
+#app {
+  padding-top: 60px; /* Adjust the top padding to avoid content being hidden under the fixed navbar */
 }
 </style>
-
