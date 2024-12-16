@@ -1,46 +1,40 @@
 <script setup>
-// Import the Navigation Bar component
-import NavigationBar from '@/components/Navbar.vue'; // This imports the Navbar component, which will be used in the app layout.
+import NavigationBar from '@/components/Navbar.vue';
+import Footer from '@/components/Footer.vue'; // Import Footer globally
 </script>
 
 <template>
   <div id="app">
     <!-- Navigation Bar, always at the top -->
-    <NavigationBar /> <!-- This renders the navigation bar component at the top of the page -->
+    <NavigationBar />
 
     <!-- Content rendered based on the route -->
     <router-view /> <!-- This tag will display different components based on the current route -->
+
+    <!-- Footer will be rendered here globally -->
+    <Footer />
   </div>
 </template>
 
 <style scoped>
-/* Scoped styles for App.vue */
-
-/* The main container for the entire application */
 #app {
-  display: flex; /* Use Flexbox layout */
-  flex-direction: column; /* Stack children vertically */
-  min-height: 100vh; /* Ensure the app takes up at least the full viewport height */
-  width: 100vw; /* Set the width of the app to 100% of the viewport width */
-  overflow-x: hidden; /* Prevent horizontal scrolling in the app */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  padding-top: 60px;
 }
 
-/* Styles for the body element */
 body {
-  width: 100%; /* Ensure body element takes up full width */
-  margin: 0; /* Remove any default margin around the body */
+  width: 100%;
+  margin: 0;
 }
 
-/* The <main> element which contains the primary content of the page */
 main {
-  flex-grow: 1; /* Allow main content to expand and fill the remaining space */
-  width: 100%; /* Ensure the main content takes up the full width of the page */
-  box-sizing: border-box; /* Include padding in the width calculation, preventing overflow */
-  overflow-x: hidden; /* Prevent horizontal scrolling in the main content */
-}
-
-/* Additional padding for the #app container to account for the navbar height */
-#app {
-  padding-top: 60px; /* Adjust the top padding to avoid content being hidden under the fixed navbar */
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 </style>
