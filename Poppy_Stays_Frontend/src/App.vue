@@ -1,13 +1,9 @@
 <script setup>
-import NavigationBar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue'; // Import Footer globally
 </script>
 
 <template>
   <div id="app">
-    <!-- Navigation Bar, always at the top -->
-    <NavigationBar />
-
     <!-- Content rendered based on the route -->
     <router-view /> <!-- This tag will display different components based on the current route -->
 

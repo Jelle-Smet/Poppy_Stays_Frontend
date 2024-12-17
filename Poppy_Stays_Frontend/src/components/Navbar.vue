@@ -15,7 +15,13 @@
               Home
             </a>
             <ul v-if="selectedMenu === 'home'" class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Sign Up / Login</a></li>
+              <!-- Updated to use router-link for navigating to the sign-up/log-in page -->
+              <li>
+                <router-link to="/" class="dropdown-item"> Home Page </router-link> <!-- link to the home page-->
+              </li>
+              <li>
+                <router-link to="/sign-up-login" class="dropdown-item">Sign Up / Login</router-link>
+              </li>
               <li><a class="dropdown-item" href="#">Special Offers</a></li>
               <li><a class="dropdown-item" href="#">Latest News</a></li>
               <li><a class="dropdown-item" href="#">Gift Cards</a></li>
@@ -27,7 +33,9 @@
               Account
             </a>
             <ul v-if="selectedMenu === 'account'" class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li>
+                <router-link to="/profile"  class="dropdown-item">Profile</router-link> <!-- Link to the Profile page -->
+              </li>
               <li><a class="dropdown-item" href="#">My Bookings</a></li>
               <li><a class="dropdown-item" href="#">My Favorites</a></li>
               <li><a class="dropdown-item" href="#">My History</a></li>

@@ -1,8 +1,5 @@
 <template>
   <div>
-    <!-- Navbar Component -->
-    <Navbar />  <!-- Navbar imported here -->
-
     <!-- Main Content -->
     <main class="content-container">
       <h1 class="page-title">Welcome to Poppy Stays!</h1> <!-- Main page title -->
@@ -14,14 +11,9 @@
 </template>
 
 <script>
-import Navbar from '../components/Navbar.vue'; // Import Navbar
-
 import { ref, onMounted } from 'vue';
 
 export default {
-  components: {
-    Navbar,  // Register Navbar
-  },
   setup() {
     const fileContent = ref("");
 
