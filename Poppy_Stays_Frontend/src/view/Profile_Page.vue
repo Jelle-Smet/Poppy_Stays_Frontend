@@ -7,7 +7,7 @@
       <!-- Display profile picture, fallback to default if not set -->
       <img :src="profilePic || defaultProfilePic" alt="Profile Picture" class="profile-pic" />
       <div class="profile-details">
-        <h3>{{ user.name }}</h3>
+        <h3>{{ user.firstName }} {{ user.lastName }}</h3>
         <p>{{ user.email }}</p>
         <p>{{ user.bio || 'No bio yet' }}</p>
         <p>Role: {{ user.role }}</p>
@@ -47,24 +47,54 @@ import { ref, onMounted } from 'vue';
 export default {
   setup() {
     const user = ref({
-      name: 'John Doe', // Example, replace with data from the backend
-      email: 'john.doe@example.com', // Example
-      bio: '', // Example
-      role: 'user', // Example, could be 'user' or 'owner' based on the database
+      firstName: '',
+      lastName: '',
+      email: '',
+      bio: '',
+      role: '',
     });
 
     const profilePic = ref('');
     const newProfilePicUrl = ref('');
-    const bio = ref(user.value.bio);
+    const bio = ref('');
     const ownerName = ref('');
     const ownerText = ref('');
     const defaultProfilePic = "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlPXfF0WJ50lrlaMBndJ-uar2i2q4YcPmStp9d7oeKOpigJ6g7"; // Default profile pic URL
 
-    // Fetch the owner text from the file (you'll need to implement this via API)
+    // Fetch user profile data from backend
     onMounted(async () => {
-      const response = await fetch('public/text_files/owner.txt');
-      if (response.ok) {
-        ownerText.value = await response.text();
+      try {
+        const token = localStorage.getItem('authToken'); // Assuming token is stored in localStorage
+        const response = await fetch('http://localhost:3000/api/profile', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch user profile');
+        }
+
+        const data = await response.json();
+        user.value = {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          bio: data.bio || 'No bio yet',
+          role: data.role,
+        };
+        profilePic.value = data.profilePic || defaultProfilePic;
+
+        // Fetch owner text from the public folder
+        const textResponse = await fetch('public/text_files/owner.txt');
+        if (textResponse.ok) {
+          ownerText.value = await textResponse.text();
+        } else {
+          console.error('Failed to load owner text');
+        }
+      } catch (error) {
+        console.error('Error fetching profile:', error);
       }
     });
 
@@ -80,31 +110,83 @@ export default {
       }
     };
 
-    const saveProfilePic = () => {
+    const saveProfilePic = async () => {
       // Save the profile picture URL (you would save this to the backend in real use)
       if (newProfilePicUrl.value) {
         profilePic.value = newProfilePicUrl.value;
       }
-      alert('Profile picture updated!');
+      // Send updated profile picture to backend
+      try {
+        const token = localStorage.getItem('authToken');
+        await fetch('http://localhost:3000/api/profile/picture', {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ pictureUrl: profilePic.value }),
+        });
+        alert('Profile picture updated!');
+      } catch (error) {
+        console.error('Error saving profile picture:', error);
+        alert('Failed to update profile picture.');
+      }
     };
 
-    // Update bio logic
-    const saveBio = () => {
-      user.value.bio = bio.value;
-      alert('Bio updated!');
-      // You would also send the new bio to the backend here
+    // Update bio logic (now updates bio instantly)
+    const saveBio = async () => {
+      try {
+        const token = localStorage.getItem('authToken');
+        await fetch('http://localhost:3000/api/profile/bio', {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ bio: bio.value }),
+        });
+
+        // Update the bio immediately in the frontend
+        user.value.bio = bio.value; // Instant update on the frontend
+
+        alert('Bio updated!');
+      } catch (error) {
+        console.error('Error saving bio:', error);
+        alert('Failed to update bio.');
+      }
     };
 
     // Become an owner logic
-    const becomeOwner = () => {
+    const becomeOwner = async () => {
       if (!ownerName.value) {
         alert('Please enter an owner name.');
         return;
       }
 
-      // Here you would send the owner name to the backend to update the user's role
-      user.value.role = 'owner';
-      alert(`Congratulations, ${ownerName.value}! You are now an owner.`);
+      // Send the owner name to the backend to update the user's role
+      try {
+        const token = localStorage.getItem('authToken');
+        const response = await fetch('http://localhost:3000/api/become-owner', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ownerName: ownerName.value }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          user.value.role = 'owner'; // Update role locally
+          alert(`Congratulations, ${ownerName.value}! You are now an owner.`);
+        } else {
+          alert(result.message || 'Failed to become an owner.');
+        }
+      } catch (error) {
+        console.error('Error becoming owner:', error);
+        alert('Failed to become an owner.');
+      }
     };
 
     return {
