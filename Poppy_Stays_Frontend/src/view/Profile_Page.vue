@@ -111,7 +111,7 @@ export default {
     };
 
     const saveProfilePic = async () => {
-      // Save the profile picture URL (you would save this to the backend in real use)
+      // Save the profile picture URL 
       if (newProfilePicUrl.value) {
         profilePic.value = newProfilePicUrl.value;
       }

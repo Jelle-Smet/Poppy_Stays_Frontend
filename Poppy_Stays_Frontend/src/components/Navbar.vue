@@ -50,7 +50,9 @@
               Spots
             </a>
             <ul v-if="selectedMenu === 'spots'" class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">All Spots</a></li>
+              <li>
+                <router-link to="/all-spots" class="dropdown-item">All Spots</router-link>
+              </li>
               <li><a class="dropdown-item" href="#">Popular Spots</a></li>
               <li><a class="dropdown-item" href="#">Categories</a></li>
               <li><a class="dropdown-item" href="#">Search</a></li>
