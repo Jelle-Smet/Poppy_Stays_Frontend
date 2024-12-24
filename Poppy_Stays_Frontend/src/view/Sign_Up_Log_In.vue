@@ -1,24 +1,18 @@
 <template>
   <div class="auth-container">
-    <!-- Button Container: Toggle between Registration and Login forms -->
     <div class="button-container">
-      <!-- Button for the Registration Form -->
       <button @click="toggleForm('register')" :class="{ active: currentForm === 'register' }">
         Become a Poppyseed
       </button>
-      <!-- Button for the Login Form -->
       <button @click="toggleForm('login')" :class="{ active: currentForm === 'login' }">
         Already a Poppyseed?
       </button>
     </div>
 
-    <!-- Form Container: Holds both forms (only one visible at a time) -->
     <div class="form-container">
-      <!-- Registration Form -->
       <transition name="fade">
         <form v-if="currentForm === 'register'" @submit.prevent="submitRegister">
           <h2>Join Poppy Stays!</h2>
-          <!-- Input fields for user details -->
           <input type="text" v-model="registerForm.firstName" placeholder="First Name" required />
           <input type="text" v-model="registerForm.lastName" placeholder="Last Name" required />
           <input type="email" v-model="registerForm.email" placeholder="Email" required />
@@ -26,24 +20,19 @@
           <input type="tel" v-model="registerForm.mobile" placeholder="Mobile Number" required />
           <input type="date" v-model="registerForm.dob" placeholder="Date of Birth" required />
           <input type="text" v-model="registerForm.address" placeholder="Address" required />
-          <!-- Terms and Conditions Checkbox -->
           <label>
             <input type="checkbox" v-model="registerForm.termsAccepted" required />
             I accept the Terms and Conditions and Privacy Policy
           </label>
-          <!-- Submit Button -->
           <button type="submit">Register</button>
         </form>
       </transition>
 
-      <!-- Login Form -->
       <transition name="fade">
         <form v-if="currentForm === 'login'" @submit.prevent="submitLogin">
           <h2>Welcome Back!</h2>
-          <!-- Input fields for login credentials -->
           <input type="email" v-model="loginForm.email" placeholder="Email" required />
           <input type="password" v-model="loginForm.password" placeholder="Password" required />
-          <!-- Submit Button -->
           <button type="submit">Log In</button>
         </form>
       </transition>
@@ -112,20 +101,8 @@ export default {
         if (response.ok) {
           alert(data.message);
           console.log('Token:', data.token);
-
-          // **Store the token in localStorage** (or sessionStorage)
           localStorage.setItem('authToken', data.token);
-
-          // Optionally store user details
-          localStorage.setItem('userDetails', JSON.stringify({
-            id: data.user.id,
-            firstName: data.user.firstName,
-            lastName: data.user.lastName,
-            email: data.user.email,
-          }));
-
-          // Redirect to another page (optional)
-          // Example: this.$router.push('/profile');
+          localStorage.setItem('userDetails', JSON.stringify(data.user));
         } else {
           alert(data.message);
         }

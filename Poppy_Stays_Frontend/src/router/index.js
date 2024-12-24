@@ -34,7 +34,7 @@ const routes = [
       {
         path: '/spot/:id', // Define the route for a specific spot
         name: 'spotDetails',
-        component: SpotDetails, 
+        component: SpotDetails,
         props: true, // Ensure that route params are passed as props to the component
       }
     ],
