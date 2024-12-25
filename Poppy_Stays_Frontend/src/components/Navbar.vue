@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <!-- Logo: Positioned in the top left corner -->
         <a class="navbar-brand logo-container" href="#">
-          <img src="https://media.discordapp.net/attachments/1294686189789515828/1318276575879237662/facebook_profile_image.png?ex=6761bc3c&is=67606abc&hm=c7b4e791d406a0525b41e8c8e9eab8f76da014f447d9aa0b821533a0374d9ca2&=&format=webp&quality=lossless&width=671&height=671" alt="Logo" class="logo" />
+          <img src="@/assets/images/Poppy_stays_Long.png" alt="Logo" class="logo" />
         </a>
 
         <!-- Main categories listed vertically under the logo -->
@@ -54,7 +54,9 @@
                 <router-link to="/all-spots" class="dropdown-item">All Spots</router-link>
               </li>
               <li><a class="dropdown-item" href="#">Popular Spots</a></li>
-              <li><a class="dropdown-item" href="#">Categories</a></li>
+              <li>
+                <router-link class="dropdown-item" to="/categories">Categories</router-link>
+              </li>
               <li><a class="dropdown-item" href="#">Search</a></li>
               <li><a class="dropdown-item" href="#">Interactive Map</a></li>
               <li><a class="dropdown-item" href="#">Spot Management</a></li>

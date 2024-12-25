@@ -8,15 +8,15 @@
         <!-- Spot Image Carousel -->
         <div class="spot-image">
           <div class="carousel">
-            <button 
-              class="carousel-control prev" 
+            <button
+              class="carousel-control prev"
               @click="prevImage(spot.id)"
             >
               &#9664; <!-- Left Arrow -->
             </button>
             <img :src="spot.images[spot.currentImageIndex] || defaultImage" :alt="spot.name" />
-            <button 
-              class="carousel-control next" 
+            <button
+              class="carousel-control next"
               @click="nextImage(spot.id)"
             >
               &#9654; <!-- Right Arrow -->
@@ -72,7 +72,7 @@ export default {
     // Fetch data from the API when the component mounts
     onMounted(async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/spots");
+        const response = await fetch("http://localhost:3000/api/all-spots");
         if (!response.ok) {
           throw new Error("Failed to fetch spots");
         }

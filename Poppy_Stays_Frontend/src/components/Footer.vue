@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <!-- Logo in the footer -->
-    <img src="@/assets/images/Logo_Long.png" alt="Poppy Stays Logo" class="footer-logo" />
+    <img src="@/assets/images/Poppy_stays.png" alt="Poppy Stays Logo" class="footer-logo" />
   </footer>
 </template>
 
