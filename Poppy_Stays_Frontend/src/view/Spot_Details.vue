@@ -73,6 +73,11 @@
         <div class="total" v-if="startDate && endDate">
           <div class="breakdown">
             <span><strong><u>Price Breakdown:</u></strong> ${{ spot.pricePerNight }} × {{ numberOfNights }} nights</span>
+            <span v-if="appliedPromotion">
+              <br><strong><u>Discount:</u></strong>
+              {{ appliedPromotion.type === 'Percentage' ? `${appliedPromotion.amount}%` : `$${appliedPromotion.amount}` }}
+              ({{ appliedPromotion.name }})
+            </span>
             <span><strong><u>Total:</u></strong> ${{ total }}</span>
           </div>
         </div>
@@ -80,8 +85,10 @@
         <!-- Promo Code Section -->
         <div class="promo-section">
           <input v-model="promoCode" type="text" placeholder="Enter promo code" class="promo-input" :disabled="promoApplied" />
-          <button @click="applyPromo" class="apply-promo-btn" :disabled="promoApplied">Apply Promo Code</button>
-          <p v-if="promoApplied" class="promo-success">{{ promoMessage }}</p>
+          <button @click="checkPromoCode" class="apply-promo-btn" :disabled="promoApplied || !promoCode">Apply Promo Code</button>
+          <p v-if="promoMessage" :class="['promo-message', { 'promo-success': promoApplied, 'promo-error': !promoApplied }]">
+            {{ promoMessage }}
+          </p>
         </div>
 
         <!-- Payment Method Section -->
@@ -94,11 +101,6 @@
             <option value="PayPal">PayPal</option>
             <option value="Apple Pay">Apple Pay</option>
           </select>
-        </div>
-
-        <!-- Total Price Section Under Payment Method -->
-        <div class="total-price">
-          <strong><u>Total Price:</u></strong> ${{ total }}
         </div>
 
         <!-- Terms and Conditions -->
@@ -155,8 +157,8 @@ export default {
     const unavailableDates = ref([]);
     const promoCode = ref('');
     const promoApplied = ref(false);
-    const promoDiscount = ref(0);
     const promoMessage = ref('');
+    const appliedPromotion = ref(null);
     const paymentMethod = ref('Card');
     const termsAccepted = ref(false);
     const isLoading = ref(false);
@@ -168,18 +170,16 @@ export default {
     const axiosWithAuth = axios.create({
       baseURL: 'http://localhost:3000',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('authToken')}`, // Ensure token is available
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`,
       },
     });
 
     onMounted(async () => {
       try {
         const spotId = parseInt(window.location.pathname.split('/')[2]);
-        console.log("Spot ID:", spotId); // Check if spotId is correct
-
         const response = await axiosWithAuth.get(`/api/spot_details/${spotId}`);
         spot.value = response.data.spot;
-        isFavorited.value = response.data.spot.isFavorited || false; // Ensure isFavorited is returned by the backend
+        isFavorited.value = response.data.spot.isFavorited || false;
 
         const availabilityResponse = await axiosWithAuth.get(`/api/spot-availability/${spotId}`);
         minDate.value = new Date(availabilityResponse.data.availabilityStart);
@@ -215,32 +215,36 @@ export default {
 
     const total = computed(() => {
       let price = numberOfNights.value * spot.value?.pricePerNight;
-      if (promoApplied.value && promoDiscount.value) {
-        price -= price * (promoDiscount.value / 100);
+
+      if (appliedPromotion.value) {
+        if (appliedPromotion.value.type === 'Percentage') {
+          price -= price * (appliedPromotion.value.amount / 100);
+        } else if (appliedPromotion.value.type === 'Fixed') {
+          price -= appliedPromotion.value.amount;
+        }
       }
-      return Math.round(price * 100) / 100;
+
+      return Math.max(0, Math.round(price * 100) / 100);
     });
 
-    const updateDates = (newDate) => {
-      if (!startDate.value || (endDate.value && newDate < startDate.value)) {
-        startDate.value = newDate;
-        endDate.value = null;
-      } else {
-        endDate.value = newDate;
-      }
-    };
+    const checkPromoCode = async () => {
+      if (!promoCode.value) return;
 
-    const applyPromo = () => {
-      if (promoCode.value === 'NEWYEAR') {
-        promoDiscount.value = 15;
-        promoApplied.value = true;
-        promoMessage.value = 'Promo applied! 15% off.';
-      } else if (promoCode.value === 'WINTERESCAPE') {
-        promoDiscount.value = 10;
-        promoApplied.value = true;
-        promoMessage.value = 'Promo applied! 10% off.';
-      } else {
-        promoMessage.value = 'Invalid promo code';
+      try {
+        const response = await axiosWithAuth.post('/api/check-promo', {
+          promoCode: promoCode.value
+        });
+
+        if (response.data.promotion) {
+          appliedPromotion.value = response.data.promotion;
+          promoApplied.value = true;
+          promoMessage.value = `${response.data.promotion.description}`;
+        }
+      } catch (error) {
+        console.error('Error checking promo code:', error);
+        promoMessage.value = error.response?.data?.message || 'Invalid promo code';
+        promoApplied.value = false;
+        appliedPromotion.value = null;
       }
     };
 
@@ -267,7 +271,7 @@ export default {
           endDate: endDate.value,
           totalAmount: total.value,
           paymentId: paymentId,
-          promotionId: null,
+          promotionId: appliedPromotion.value?.id || null,
         };
 
         await axiosWithAuth.post('/api/create-booking', bookingDetails);
@@ -321,16 +325,15 @@ export default {
       unavailableDates,
       promoCode,
       promoApplied,
-      promoDiscount,
       promoMessage,
+      appliedPromotion,
       paymentMethod,
       termsAccepted,
       errorMessage,
       isLoading,
       total,
       numberOfNights,
-      updateDates,
-      applyPromo,
+      checkPromoCode,
       handleBooking,
       canBook,
       minDate,
