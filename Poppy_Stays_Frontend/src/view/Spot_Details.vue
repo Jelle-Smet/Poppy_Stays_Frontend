@@ -204,6 +204,21 @@ export default {
       }
     });
 
+    const toggleFavorite = async () => {
+      try {
+        const spotId = parseInt(window.location.pathname.split('/')[2]);
+
+        // Send the spotId in the request body
+        await axiosWithAuth.post('/api/toggle-favorite', { spotId });
+
+        // Assuming `isFavorited` is a reactive reference
+        isFavorited.value = !isFavorited.value;
+      } catch (error) {
+        console.error('Error toggling favorite status:', error);
+        alert('Failed to update favorite status. Please try again later.');
+      }
+    };
+
     const currentImage = computed(() => spot.value?.images[currentImageIndex.value]);
 
     const numberOfNights = computed(() => {
@@ -338,11 +353,13 @@ export default {
       canBook,
       minDate,
       maxDate,
-      isFavorited
+      isFavorited,
+      toggleFavorite
     };
   },
 };
 </script>
+
 
 <style scoped>
 .selected-dates {
