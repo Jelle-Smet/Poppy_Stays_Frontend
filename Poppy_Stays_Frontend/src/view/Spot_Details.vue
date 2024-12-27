@@ -362,18 +362,21 @@ export default {
 
 
 <style scoped>
-.selected-dates {
-  margin: 1rem 0;
-  font-size: 1rem;
-  color: #333;
-}
-
+/* General Layout and Container Styles */
 .spot-detail {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  color: #000
 }
 
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px; /* Main content and booking card split */
+  gap: 2rem;
+}
+
+/* Image Gallery Styles */
 .image-gallery {
   position: relative;
   border-radius: 1rem;
@@ -388,6 +391,7 @@ export default {
   background-color: #f0f0f0;
 }
 
+/* Image Navigation Arrow Styles */
 .arrow {
   position: absolute;
   top: 50%;
@@ -409,6 +413,7 @@ export default {
   right: 10px;
 }
 
+/* Image Navigation Dots */
 .image-nav {
   position: absolute;
   bottom: 1rem;
@@ -431,23 +436,80 @@ export default {
   background: white;
 }
 
-.content-grid {
-  display: grid;
-  grid-template-columns: 1fr 350px;
-  gap: 2rem;
+/* Main Spot Information Container */
+.spot-info {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
 }
 
-.calendar-section {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: rgb(0, 0, 0);
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
+/* Spot Title Styles */
 .spot-info h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #000;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 1rem;
+}
+
+/* Information Container Styles */
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Increased spacing between info items */
+  margin-top: 2rem;
+}
+
+/* Individual Info Item Styles */
+.info-item {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+  color: #000;
+}
+
+.info-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Info Item Title and Content Styles */
+.info-title {
+  font-size: 1.2rem;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.info-content {
+  font-size: 1.1rem;
+  color: #000;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+/* Amenities Section Styles */
+.amenities {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.amenities h2 {
+  font-size: 1.8rem;
+  color: #000;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e0e0e0;
 }
 
 .amenities-grid {
@@ -458,11 +520,21 @@ export default {
 }
 
 .amenity {
-  background: #020202;
-  padding: 0.5rem;
-  border-radius: 5px;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+  color: #000;
 }
 
+.amenity:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Booking Card Styles */
 .booking-card {
   background-color: #fff;
   padding: 2rem;
@@ -470,12 +542,21 @@ export default {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Price Display Styles */
 .price {
-  color: black;
+  color: #000;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
+/* Selected Dates Display */
+.selected-dates {
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: #000;
+}
+
+/* Booking Button Styles */
 .book-btn {
   background-color: #4caf50;
   color: white;
@@ -485,6 +566,7 @@ export default {
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
 .book-btn:disabled {
@@ -492,8 +574,9 @@ export default {
   cursor: not-allowed;
 }
 
+/* Price Breakdown Styles */
 .breakdown {
-  color: black;
+  color: #000;
   font-size: 1rem;
   margin-top: 1rem;
 }
@@ -505,10 +588,11 @@ export default {
 
 .total {
   font-size: 1.2rem;
-  color: black;
+  color: #000;
   margin-top: 1.5rem;
 }
 
+/* Promo Code Section Styles */
 .promo-section {
   margin-top: 1rem;
 }
@@ -519,6 +603,7 @@ export default {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  color: #000;
 }
 
 .apply-promo-btn {
@@ -529,6 +614,7 @@ export default {
   color: white;
   cursor: pointer;
   border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
 .promo-success {
@@ -536,9 +622,11 @@ export default {
   font-size: 1rem;
   margin-top: 0.5rem;
 }
+
+/* Payment Method Styles */
 .payment-method {
   margin-top: 1rem;
-  color: black;
+  color: #000;
 }
 
 .payment-dropdown {
@@ -547,30 +635,20 @@ export default {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  color: #000;
 }
 
-
-.total-price {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  color: black;
-}
-
+/* Terms and Conditions Styles */
 .terms-conditions {
   margin-top: 1rem;
-  color: black;
+  color: #000;
 }
 
 .terms-conditions input {
   margin-right: 0.5rem;
 }
 
-.book-btn:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
+/* Favorite Button Styles */
 .favorite-btn {
   position: absolute;
   top: 20px;
@@ -586,6 +664,7 @@ export default {
   transition: all 0.3s ease;
   font-weight: 500;
   z-index: 10;
+  color: #000;
 }
 
 .favorite-btn:hover {
@@ -607,13 +686,22 @@ export default {
   transition: all 0.3s ease;
 }
 
-error-message {
-  color: black;
+/* Error Message Styles */
+.error-message {
+  color: #000;
   margin: 1rem 0;
   padding: 0.5rem;
   background-color: #f8d7da;
   border-radius: 4px;
   text-align: center;
+}
 
+/* Calendar Section Styles */
+.calendar-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgb(0, 0, 0);
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 </style>

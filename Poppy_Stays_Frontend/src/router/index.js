@@ -6,6 +6,7 @@ import Profile from '../view/Profile_Page.vue'; // Import the Profile page compo
 import AllSpots from '../view/All_Spots.vue'; // Import All Spots component
 import SpotDetails from '../view/Spot_Details.vue'; // Import the SpotDetails component
 import CategoryPage from '../view/Category_Spots.vue'; // Import the CategoryPage component
+import OwnerSpotPage from '../view/Owner_Spots.vue'; // Import the new OwnerSpotPage component
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
         path: '/categories', // Add the route for the Category Page
         name: 'categories',
         component: CategoryPage, // Component to display the categories dropdown
+      },
+      {
+        path: '/owner-spots', // New route for browsing spots after selecting an owner
+        name: 'ownerSpots',
+        component: OwnerSpotPage, // Component for owner selection and spot filtering
       },
     ],
   },

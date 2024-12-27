@@ -57,6 +57,9 @@
               <li>
                 <router-link class="dropdown-item" to="/categories">Categories</router-link>
               </li>
+              <li>
+                <router-link class="dropdown-item" to="/owner-spots">Owners</router-link>
+              </li>
               <li><a class="dropdown-item" href="#">Search</a></li>
               <li><a class="dropdown-item" href="#">Interactive Map</a></li>
               <li><a class="dropdown-item" href="#">Spot Management</a></li>
