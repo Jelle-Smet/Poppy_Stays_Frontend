@@ -9,6 +9,7 @@ import CategoryPage from '../view/Category_Spots.vue'; // Import the CategoryPag
 import OwnerSpotPage from '../view/Owner_Spots.vue'; // Import the new OwnerSpotPage component
 import SpotOverview from '../view/Spot_Overview.vue'; // Import the new SpotOverview component
 import UpdateSpotPage from '../view/Spot_Update.vue'; // Import the UpdateSpotPage component
+import AddSpot from '../View/Add_Spot.vue'; // import the AddSpot component
 
 const routes = [
   {
@@ -63,6 +64,12 @@ const routes = [
         name: 'spotUpdate',
         component: UpdateSpotPage,
         props: true
+      },
+
+      {
+        path: '/add-spot', // Define the path for the new AddSpot page
+        name: 'addSpot', // Name the route
+        component: AddSpot, // The component to render when this route is visited
       },
 
     ],

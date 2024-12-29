@@ -71,7 +71,7 @@
               </li>
               <li>
                 <!-- Link to Add Spot page -->
-                <a class="dropdown-item" href="#"> Add a Spot</a>
+                <router-link to= "/add-spot" class="dropdown-item"> Add a Spot</router-link>
               </li>
               <li>
                 <!-- Link to Delete Spot page -->
