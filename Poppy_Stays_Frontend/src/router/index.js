@@ -7,6 +7,8 @@ import AllSpots from '../view/All_Spots.vue'; // Import All Spots component
 import SpotDetails from '../view/Spot_Details.vue'; // Import the SpotDetails component
 import CategoryPage from '../view/Category_Spots.vue'; // Import the CategoryPage component
 import OwnerSpotPage from '../view/Owner_Spots.vue'; // Import the new OwnerSpotPage component
+import SpotOverview from '../view/Spot_Overview.vue'; // Import the new SpotOverview component
+import UpdateSpotPage from '../view/Spot_Update.vue'; // Import the UpdateSpotPage component
 
 const routes = [
   {
@@ -45,10 +47,24 @@ const routes = [
         component: CategoryPage, // Component to display the categories dropdown
       },
       {
-        path: '/owner-spots', // New route for browsing spots after selecting an owner
+        path: '/owner-spots', // New route for browsing spots as an owner
         name: 'ownerSpots',
-        component: OwnerSpotPage, // Component for owner selection and spot filtering
+        component: OwnerSpotPage, // Component for owner spots
       },
+      {
+        path: '/spot-overview', // New route for Spot Overview page
+        name: 'spotOverview',
+        component: SpotOverview, // Component for the spot overview
+        props: true, // Pass route params as props to the component
+      },
+
+      {
+        path: '/spot/update/:id',
+        name: 'spotUpdate',
+        component: UpdateSpotPage,
+        props: true
+      },
+
     ],
   },
 ];

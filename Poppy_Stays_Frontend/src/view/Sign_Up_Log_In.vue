@@ -101,8 +101,10 @@ export default {
         if (response.ok) {
           alert(data.message);
           console.log('Token:', data.token);
-          localStorage.setItem('authToken', data.token);
-          localStorage.setItem('userDetails', JSON.stringify(data.user));
+          localStorage.setItem('authToken', data.token); // save token
+          localStorage.setItem('userDetails', JSON.stringify(data.user)); // save userdata
+          localStorage.setItem('Owner_ID', data.user.ownerId); // Use `ownerId` from backend
+
         } else {
           alert(data.message);
         }
@@ -111,6 +113,7 @@ export default {
         alert('An error occurred during login. Please try again.');
       }
     };
+
 
     return {
       currentForm, registerForm, loginForm, toggleForm, submitRegister, submitLogin,
