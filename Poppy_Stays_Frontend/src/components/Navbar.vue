@@ -75,7 +75,7 @@
               </li>
               <li>
                 <!-- Link to Delete Spot page -->
-                <a class="dropdown-item" href="#"> Delete a Spot</a>
+                <router-link to="/spot/delete-overview" class="dropdown-item"> Delete a Spot</router-link>
               </li>
             </ul>
           </li>

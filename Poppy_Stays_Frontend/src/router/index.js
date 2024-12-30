@@ -10,6 +10,8 @@ import OwnerSpotPage from '../view/Owner_Spots.vue'; // Import the new OwnerSpot
 import SpotOverview from '../view/Spot_Overview.vue'; // Import the new SpotOverview component
 import UpdateSpotPage from '../view/Spot_Update.vue'; // Import the UpdateSpotPage component
 import AddSpot from '../View/Add_Spot.vue'; // import the AddSpot component
+import DeleteSpotOverviewView from '../view/Overwiev_Delete_Spot.vue'; // import the DeleteSpotview component
+import DeleteSpot from '../view/Spot_Delete.vue'; // import the DeleteSpot component
 
 const routes = [
   {
@@ -71,6 +73,22 @@ const routes = [
         name: 'addSpot', // Name the route
         component: AddSpot, // The component to render when this route is visited
       },
+
+      {
+        path: '/spot/delete-overview',
+        name: 'spotDeleteOverview',
+        component: DeleteSpotOverviewView,
+        props: true
+      },
+
+      {
+        path: '/spot/delete/:id',
+        name: 'spotDelete',
+        component: DeleteSpot, // This should handle the logic for deleting a specific spot
+        props: true // Enables passing `id` as a prop to the component
+      },
+
+
 
     ],
   },
