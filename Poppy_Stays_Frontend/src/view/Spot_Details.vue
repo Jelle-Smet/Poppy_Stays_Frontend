@@ -137,8 +137,48 @@
         @update:selected-end-date="endDate = $event"
       />
     </div>
+    <!-- Reviews Section -->
+    <div class="reviews-section">
+      <h2><strong><u>Reviews</u></strong></h2>
+
+      <div class="reviews-summary">
+        <div class="average-rating">
+          <span class="rating-number">{{ averageRating.toFixed(1) }}</span>
+          <div class="stars">
+            <div class="stars-filled" :style="{ width: `${(averageRating / 5) * 100}%` }">★★★★★</div>
+            <div class="stars-empty">★★★★★</div>
+          </div>
+          <span class="total-reviews">{{ spot.reviews.length }} reviews</span>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <div v-for="review in spot.reviews" :key="review.date" class="review-card">
+          <div class="review-header">
+            <div class="stars">
+              <div class="stars-filled" :style="{ width: `${(review.rating / 5) * 100}%` }">★★★★★</div>
+              <div class="stars-empty">★★★★★</div>
+            </div>
+            <span class="review-date">{{ formatDate(review.date) }}</span>
+          </div>
+
+          <p class="review-comment">{{ review.comment }}</p>
+
+          <img v-if="review.image"
+               :src="review.image"
+               :alt="'Review image'"
+               class="review-image"
+               @click="openImageModal(review.image)" />
+        </div>
+      </div>
+    </div>
   </div>
   <div v-else class="loading">Loading...</div>
+
+  <!-- Image Modal -->
+  <div v-if="selectedImage" class="image-modal" @click="selectedImage = null">
+    <img :src="selectedImage" alt="Review image full size" class="modal-image" />
+  </div>
 </template>
 
 <script>
@@ -329,6 +369,26 @@ export default {
       );
     });
 
+    const selectedImage = ref(null);
+
+    const averageRating = computed(() => {
+      if (!spot.value?.reviews?.length) return 0;
+      const total = spot.value.reviews.reduce((sum, review) => sum + review.rating, 0);
+      return total / spot.value.reviews.length;
+    });
+
+    const formatDate = (date) => {
+      return new Date(date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    };
+
+    const openImageModal = (image) => {
+      selectedImage.value = image;
+    };
+
     return {
       spot,
       currentImage,
@@ -354,7 +414,11 @@ export default {
       minDate,
       maxDate,
       isFavorited,
-      toggleFavorite
+      toggleFavorite,
+      averageRating,
+      formatDate,
+      selectedImage,
+      openImageModal
     };
   },
 };
@@ -703,5 +767,133 @@ export default {
   background: rgb(0, 0, 0);
   border-radius: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-section {
+  margin-top: 3rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.reviews-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #000;
+}
+
+.reviews-summary {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.average-rating {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rating-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.stars {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  width: 7.5rem;
+  line-height: 1;
+}
+
+.stars-empty {
+  color: #e0e0e0;
+}
+
+.stars-filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #ffd700;
+}
+
+.total-reviews {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.review-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-2px);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.review-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.review-comment {
+  color: #000;
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+.review-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.review-image:hover {
+  opacity: 0.9;
+}
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
 }
 </style>

@@ -44,9 +44,15 @@
                 <!-- Link to the Profile page -->
                 <router-link to="/profile" class="dropdown-item">Profile</router-link>
               </li>
-              <li><a class="dropdown-item" href="#">My Bookings</a></li>
-              <li><a class="dropdown-item" href="#">My Favorites</a></li>
-              <li><a class="dropdown-item" href="#">My History</a></li>
+              <li>
+                <router-link to="/upcoming bookings" class="dropdown-item">My Bookings</router-link>
+              </li>
+              <li>
+                <router-link to="/spot/favorite" class="dropdown-item">My Favorites</router-link>
+              </li>
+              <li>
+                <router-link to="/past-cancelled-bookings" class="dropdown-item">My History</router-link>
+              </li>
               <li><a class="dropdown-item" href="#">Notifications & Alerts</a></li>
               <li><a class="dropdown-item" href="#">Messages</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -102,7 +108,6 @@
               </li>
               <li><a class="dropdown-item" href="#">Search</a></li>
               <li><a class="dropdown-item" href="#">Interactive Map</a></li>
-              <li><a class="dropdown-item" href="#">Spot Management</a></li>
               <li><a class="dropdown-item" href="#">Poppy's Guide & Tips</a></li>
               <li><a class="dropdown-item" href="#">Poppy's Pick</a></li>
             </ul>

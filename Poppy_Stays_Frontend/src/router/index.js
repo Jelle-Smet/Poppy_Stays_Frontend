@@ -12,6 +12,12 @@ import UpdateSpotPage from '../view/Spot_Update.vue'; // Import the UpdateSpotPa
 import AddSpot from '../View/Add_Spot.vue'; // import the AddSpot component
 import DeleteSpotOverviewView from '../view/Overwiev_Delete_Spot.vue'; // import the DeleteSpotview component
 import DeleteSpot from '../view/Spot_Delete.vue'; // import the DeleteSpot component
+import FavoriteSpot from '../view/Favorite_Spots.vue'; // import the FavoriteSpot component
+import UpcomingBookings from '../view/Upcoming_bookings.vue'; // import the UpcomingBookings components
+import CancelBooking from '../view/Cancel_Booking.vue'; // import the UpcomingBookings components
+import PastAndCancelledBookings from '../view/Past_And_Cancelled_bookings.vue'; // Import the PastAndCancelledBookings component.
+import SubmitReview from '../view/Submit_Review.vue'; // import the SubmitReview component.
+import ThankYouPage from '../view/Thank_You.vue';
 
 const routes = [
   {
@@ -88,7 +94,46 @@ const routes = [
         props: true // Enables passing `id` as a prop to the component
       },
 
+      {
+        path: '/spot/favorite',
+        name: 'favoriteSpots',
+        component: FavoriteSpot,
+        props: true
+      },
 
+      {
+        path: '/upcoming bookings',
+        name: 'UpcomingBookings',
+        component: UpcomingBookings,
+        props: true
+      },
+
+      {
+        path: '/cancel-booking/:bookingId', // Path with the booking ID as a parameter
+        name: 'cancelBooking',
+        component: CancelBooking, // Ensure you have the CancelBooking component
+        props: true, // Pass the bookingId as a prop to the component
+      },
+
+      {
+        path: '/past-cancelled-bookings', // Define the URL path
+        name: 'pastCancelledBookings', // Name of the route
+        component: PastAndCancelledBookings, // Component to render
+        props: true, // Enable props if the component needs route parameters
+      },
+
+      {
+        path: "/submit-review/:spotId", // Dynamic route with userId and spotId
+        name: "SubmitReview", // name of the route
+        component: SubmitReview, // component to render
+        props: true, // Pass route params as props to the component
+      },
+
+      {
+        path: "/thank-you",
+        name: "ThankYou",
+        component: ThankYouPage,
+      }
 
     ],
   },
