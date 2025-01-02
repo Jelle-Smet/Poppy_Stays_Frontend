@@ -17,7 +17,11 @@ import UpcomingBookings from '../view/Upcoming_bookings.vue'; // import the Upco
 import CancelBooking from '../view/Cancel_Booking.vue'; // import the UpcomingBookings components
 import PastAndCancelledBookings from '../view/Past_And_Cancelled_bookings.vue'; // Import the PastAndCancelledBookings component.
 import SubmitReview from '../view/Submit_Review.vue'; // import the SubmitReview component.
-import ThankYouPage from '../view/Thank_You.vue';
+import ThankYouPage from '../view/Thank_You.vue'; // import the ThankYouPage component
+import AccountSettings from '../view/Account_Settings.vue'; // import the AccountSettings component
+import PastAndUpcomingBookingsOwner from '../view/Spot_Booking.vue'; // import the PastAndUpcomingBookingsOwner component.
+import PastAndCancelledOwnerBookings from '../view/Spot_Past_bookings.vue';// import the PastAndCancelledOwnerBookings component
+import UpcomingOwnerBookings from '../view/Spot_Upcoming_Bookings.vue'; // import the UpcomingOwnerBookings component.
 
 const routes = [
   {
@@ -102,7 +106,7 @@ const routes = [
       },
 
       {
-        path: '/upcoming bookings',
+        path: '/upcoming_bookings',
         name: 'UpcomingBookings',
         component: UpcomingBookings,
         props: true
@@ -133,7 +137,35 @@ const routes = [
         path: "/thank-you",
         name: "ThankYou",
         component: ThankYouPage,
+      },
+
+      {
+        path: '/settings',
+        name: 'Settings',
+        component: AccountSettings,  // Register the Settings page route here
+      },
+
+      {
+        path: '/Booking_Management',
+        name: 'Booking_Management',
+        component: PastAndUpcomingBookingsOwner,
+        props: true
+      },
+
+      {
+        path: '/past-bookings/:spotId',
+        name: 'PastAndCancelledOwnerBookings',
+        component: PastAndCancelledOwnerBookings,
+        props: true, // This allows the spotId to be passed as a prop.
+      },
+
+      {
+        path: '/upcoming-bookings/:spotId',
+        name: 'UpcomingOwnerBookings',
+        component: UpcomingOwnerBookings,  // Replace with the actual component name for the upcoming bookings page.
+        props: true,  // This will allow the spotId to be passed as a prop to the component.
       }
+
 
     ],
   },

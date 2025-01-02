@@ -135,6 +135,7 @@ export default {
   max-width: 500px;
   margin: 50px auto;
   height: 80vh;
+  color: black;
 }
 
 .button-container {

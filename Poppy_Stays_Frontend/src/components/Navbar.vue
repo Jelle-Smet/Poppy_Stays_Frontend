@@ -45,7 +45,7 @@
                 <router-link to="/profile" class="dropdown-item">Profile</router-link>
               </li>
               <li>
-                <router-link to="/upcoming bookings" class="dropdown-item">My Bookings</router-link>
+                <router-link to="/upcoming_bookings" class="dropdown-item">My Bookings</router-link>
               </li>
               <li>
                 <router-link to="/spot/favorite" class="dropdown-item">My Favorites</router-link>
@@ -55,7 +55,9 @@
               </li>
               <li><a class="dropdown-item" href="#">Notifications & Alerts</a></li>
               <li><a class="dropdown-item" href="#">Messages</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li>
+                <router-link to="/settings" class="dropdown-item" href="#">Settings</router-link>
+              </li>
               <!-- 'Booking Management' moved to the new 'Management' category -->
             </ul>
           </li>
@@ -69,7 +71,7 @@
             <ul v-if="selectedMenu === 'management'" class="dropdown-menu">
               <li>
                 <!-- Link to Booking Management page -->
-                <a class="dropdown-item" href="#"> Booking Management</a>
+                <router-link to="/Booking_Management" class="dropdown-item" > Booking Management</router-link>
               </li>
               <li>
                 <!-- Link to Spot Management page -->
