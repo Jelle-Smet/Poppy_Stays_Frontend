@@ -22,6 +22,10 @@ import AccountSettings from '../view/Account_Settings.vue'; // import the Accoun
 import PastAndUpcomingBookingsOwner from '../view/Spot_Booking.vue'; // import the PastAndUpcomingBookingsOwner component.
 import PastAndCancelledOwnerBookings from '../view/Spot_Past_bookings.vue';// import the PastAndCancelledOwnerBookings component
 import UpcomingOwnerBookings from '../view/Spot_Upcoming_Bookings.vue'; // import the UpcomingOwnerBookings component.
+import InterActiveMap from '../view/Interactive_Map.vue'; // import InterActiveMap component.
+import PopularSpots from '../view/Pupular_Spots.vue'; // import the PopularSpots component.
+import SearchSPots from '../view/Search_Spots.vue'; // import the SearchSpots component.
+import PoppysPickPage from '../view/Poppys_Pick.vue'; // import the PoppysPick component.
 
 const routes = [
   {
@@ -164,8 +168,31 @@ const routes = [
         name: 'UpcomingOwnerBookings',
         component: UpcomingOwnerBookings,  // Replace with the actual component name for the upcoming bookings page.
         props: true,  // This will allow the spotId to be passed as a prop to the component.
-      }
+      },
 
+      {
+        path: '/map',
+        name: 'InteractiveMap',
+        component: InterActiveMap,
+      },
+
+      {
+        path: '/top-booked',
+        name: 'TopBookedSpots',
+        component: PopularSpots,
+      },
+
+      {
+        path: '/Search-Spots',
+        name: 'Search-results',
+        component: SearchSPots
+      },
+
+      {
+        path: '/poppys-pick',
+        name: 'poppysPick',
+        component: PoppysPickPage,  // Register the new Poppy's Pick page
+      },
 
     ],
   },

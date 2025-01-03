@@ -99,7 +99,9 @@
                 <!-- Link to All Spots page -->
                 <router-link to="/all-spots" class="dropdown-item">All Spots</router-link>
               </li>
-              <li><a class="dropdown-item" href="#">Popular Spots</a></li>
+              <li>
+                <router-link to="/top-booked" class="dropdown-item">Popular Spots</router-link>
+              </li>
               <li>
                 <!-- Link to Categories page -->
                 <router-link class="dropdown-item" to="/categories">Categories</router-link>
@@ -108,10 +110,16 @@
                 <!-- Link to Owners page -->
                 <router-link class="dropdown-item" to="/owner-spots">Owners</router-link>
               </li>
-              <li><a class="dropdown-item" href="#">Search</a></li>
-              <li><a class="dropdown-item" href="#">Interactive Map</a></li>
+              <li>
+                <router-link to="/Search-Spots" class="dropdown-item" href="#">Search Spots</router-link>
+              </li>
+              <li>
+                <router-link to="/map" class="dropdown-item" >Interactive Map</router-link>
+              </li>
               <li><a class="dropdown-item" href="#">Poppy's Guide & Tips</a></li>
-              <li><a class="dropdown-item" href="#">Poppy's Pick</a></li>
+              <li>
+                <router-link to="/Poppys-Pick" class="dropdown-item" >Poppy's Pick</router-link>
+              </li>
             </ul>
           </li>
 
