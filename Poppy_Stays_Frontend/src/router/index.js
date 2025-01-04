@@ -26,6 +26,7 @@ import InterActiveMap from '../view/Interactive_Map.vue'; // import InterActiveM
 import PopularSpots from '../view/Pupular_Spots.vue'; // import the PopularSpots component.
 import SearchSPots from '../view/Search_Spots.vue'; // import the SearchSpots component.
 import PoppysPickPage from '../view/Poppys_Pick.vue'; // import the PoppysPick component.
+import Notifications from '../view/Notifications.vue'; // import the Notifications component
 
 const routes = [
   {
@@ -193,6 +194,12 @@ const routes = [
         name: 'poppysPick',
         component: PoppysPickPage,  // Register the new Poppy's Pick page
       },
+
+      {
+        path: '/Notifications',
+        name: 'Notifications',
+        component: Notifications
+      }
 
     ],
   },

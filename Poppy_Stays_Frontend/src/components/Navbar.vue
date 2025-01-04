@@ -53,7 +53,9 @@
               <li>
                 <router-link to="/past-cancelled-bookings" class="dropdown-item">My History</router-link>
               </li>
-              <li><a class="dropdown-item" href="#">Notifications & Alerts</a></li>
+              <li>
+                <router-link to="/Notifications" class="dropdown-item" href="#">Notifications & Alerts</router-link>
+              </li>
               <li><a class="dropdown-item" href="#">Messages</a></li>
               <li>
                 <router-link to="/settings" class="dropdown-item" href="#">Settings</router-link>
