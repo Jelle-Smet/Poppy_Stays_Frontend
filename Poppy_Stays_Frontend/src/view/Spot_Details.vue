@@ -107,8 +107,12 @@
         <div class="terms-conditions">
           <input v-model="termsAccepted" type="checkbox" id="terms" />
           <label for="terms">
-            I accept the <a href="/terms-and-conditions" target="_blank">Terms and Conditions</a> and <a href="/privacy-policy" target="_blank">Privacy Policy</a>.
+            I accept the
+            <router-link to="/terms-and-conditions">Terms and Conditions</router-link>
+            and
+            <router-link to="/privacy-policy">Privacy Policy</router-link>.
           </label>
+
         </div>
         <div v-if="errorMessage" class="error-message">
           {{ errorMessage }}
@@ -247,11 +251,7 @@ export default {
     const toggleFavorite = async () => {
       try {
         const spotId = parseInt(window.location.pathname.split('/')[2]);
-
-        // Send the spotId in the request body
         await axiosWithAuth.post('/api/toggle-favorite', { spotId });
-
-        // Assuming `isFavorited` is a reactive reference
         isFavorited.value = !isFavorited.value;
       } catch (error) {
         console.error('Error toggling favorite status:', error);
@@ -286,18 +286,22 @@ export default {
       if (!promoCode.value) return;
 
       try {
-        const response = await axiosWithAuth.post('/api/check-promo', {
-          promoCode: promoCode.value
+        const response = await axiosWithAuth.post('/api/check-promo-or-giftcard', {
+          code: promoCode.value
         });
 
-        if (response.data.promotion) {
+        if (response.data.type === 'promotion') {
           appliedPromotion.value = response.data.promotion;
           promoApplied.value = true;
           promoMessage.value = `${response.data.promotion.description}`;
+        } else if (response.data.type === 'giftcard') {
+          appliedPromotion.value = response.data.giftCard;
+          promoApplied.value = true;
+          promoMessage.value = `Gift card applied: ${response.data.giftCard.name}`;
         }
       } catch (error) {
         console.error('Error checking promo code:', error);
-        promoMessage.value = error.response?.data?.message || 'Invalid promo code';
+        promoMessage.value = error.response?.data?.message || 'Invalid promo code or gift card';
         promoApplied.value = false;
         appliedPromotion.value = null;
       }
@@ -423,6 +427,7 @@ export default {
   },
 };
 </script>
+
 
 
 <style scoped>

@@ -5,10 +5,10 @@ import Footer from '@/components/Footer.vue'; // Import Footer globally
 <template>
   <div id="app">
     <!-- Content rendered based on the route -->
-    <router-view /> <!-- This tag will display different components based on the current route -->
+    <router-view> </router-view> <!-- This tag will display different components based on the current route -->
 
     <!-- Footer will be rendered here globally -->
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 

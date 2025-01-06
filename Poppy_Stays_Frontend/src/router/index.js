@@ -26,7 +26,14 @@ import InterActiveMap from '../view/Interactive_Map.vue'; // import InterActiveM
 import PopularSpots from '../view/Pupular_Spots.vue'; // import the PopularSpots component.
 import SearchSPots from '../view/Search_Spots.vue'; // import the SearchSpots component.
 import PoppysPickPage from '../view/Poppys_Pick.vue'; // import the PoppysPick component.
-import Notifications from '../view/Notifications.vue'; // import the Notifications component
+import Notifications from '../view/Notifications.vue'; // import the Notifications component.
+import GiftCardOverView from '../view/Gift_Cards_Overview.vue'; // import the GiftCardOverView component.
+import GiftCardPurchase from '../view/Gift_Card_Purchase.vue'; // import the GiftCardPurchase component.
+import PromotionsPage from '../view/Promotions.vue'; // import the PromotionsPage component
+import TermsAndConditions from '../view/Terms_And_Conditions.vue'; // import the TermsAndconditions component
+import PrivacyPolicy from '../view/Privacy_Policy.vue'; // import the PrivacyPolicy component
+import LatestNews from '../view/Latest_news.vue'; // import the LatestNews Component
+import MorePage from '../view/More.vue'; // import the More page
 
 const routes = [
   {
@@ -172,7 +179,7 @@ const routes = [
       },
 
       {
-        path: '/map',
+        path: '/Interactive-Map',
         name: 'InteractiveMap',
         component: InterActiveMap,
       },
@@ -199,6 +206,49 @@ const routes = [
         path: '/Notifications',
         name: 'Notifications',
         component: Notifications
+      },
+
+      {
+        path: '/Gift-Cards',
+        name: 'Gift Cards',
+        component: GiftCardOverView
+      },
+
+      {
+        path: '/gift-card-purchase/:id',
+        name: 'gift-card-purchase',
+        component: GiftCardPurchase,
+        props: true
+      },
+
+      {
+        path: "/Poppy's_Promotions",
+        name: "Poppy's promotions",
+        component: PromotionsPage
+      },
+
+      {
+        path: '/terms-and-conditions',
+        name: 'TermsAndConditions',
+        component: TermsAndConditions,
+      },
+
+      {
+        path: '/privacy-policy',
+        name: 'PrivacyPolicy',
+        component: PrivacyPolicy,
+      },
+
+      {
+        path: '/Latest_News',
+        name: "Latest News",
+        component: LatestNews
+      },
+
+      {
+        path: '/More',
+        name: 'More',
+        component: MorePage
       }
 
     ],

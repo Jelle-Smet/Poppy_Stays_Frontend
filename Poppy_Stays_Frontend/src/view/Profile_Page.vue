@@ -1,15 +1,15 @@
 <template>
   <div class="profile-container">
     <h2>Your Profile</h2>
-    
+
     <!-- Profile Picture -->
     <div class="profile-info">
       <!-- Display profile picture, fallback to default if not set -->
       <img :src="profilePic || defaultProfilePic" alt="Profile Picture" class="profile-pic" />
       <div class="profile-details">
         <h3>{{ user.firstName }} {{ user.lastName }}</h3>
-        <p>{{ user.email }}</p>
-        <p>{{ user.bio || 'No bio yet' }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Bio: {{ user.bio || 'No bio yet' }}</p>
         <p>Role: {{ user.role }}</p>
       </div>
     </div>
@@ -71,7 +71,7 @@ export default {
             'Authorization': `Bearer ${token}`,
           },
         });
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch user profile');
         }
@@ -111,7 +111,7 @@ export default {
     };
 
     const saveProfilePic = async () => {
-      // Save the profile picture URL 
+      // Save the profile picture URL
       if (newProfilePicUrl.value) {
         profilePic.value = newProfilePicUrl.value;
       }

@@ -6,16 +6,16 @@
         <div class="container-fluid">
           <!-- Branding or Logo -->
           <a class="navbar-brand" href="#">Poppy Stays</a>
-          
+
           <!-- Hamburger menu for mobile view -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          
+
           <!-- Menu Items: Will collapse in mobile view -->
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              
+
               <!-- Home Menu Item -->
               <li class="nav-item dropdown" :class="{ 'bg-dark': selectedMenu === 'home' }">
                 <!-- Home Link: Toggles sub-menu visibility -->
@@ -32,7 +32,7 @@
                   <li><a class="dropdown-item" href="#">More</a></li>
                 </ul>
               </li>
-  
+
               <!-- Account Menu Item -->
               <li class="nav-item dropdown" :class="{ 'bg-dark': selectedMenu === 'account' }">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAccount" role="button" data-bs-toggle="dropdown" aria-expanded="false" @click="toggleSubMenu('account')">
@@ -51,7 +51,7 @@
                   <li><a class="dropdown-item" href="#">Booking Management</a></li>
                 </ul>
               </li>
-  
+
               <!-- Spots Menu Item -->
               <li class="nav-item dropdown" :class="{ 'bg-dark': selectedMenu === 'spots' }">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSpots" role="button" data-bs-toggle="dropdown" aria-expanded="false" @click="toggleSubMenu('spots')">
@@ -70,7 +70,7 @@
                   <li><a class="dropdown-item" href="#">Poppy's Pick</a></li>
                 </ul>
               </li>
-  
+
               <!-- About Us Menu Item -->
               <li class="nav-item dropdown" :class="{ 'bg-dark': selectedMenu === 'aboutUs' }">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAboutUs" role="button" data-bs-toggle="dropdown" aria-expanded="false" @click="toggleSubMenu('aboutUs')">
@@ -86,7 +86,7 @@
                   <li><a class="dropdown-item" href="#">Merchandise</a></li>
                 </ul>
               </li>
-  
+
               <!-- Contact Menu Item: No sub-menu -->
               <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
@@ -97,7 +97,7 @@
       </nav>
     </header>
   </template>
-  
+
   <script>
   // Vue Component Logic
   export default {
@@ -121,35 +121,34 @@
     },
   };
   </script>
-  
+
   <style scoped>
   /* Scoped styles for the Header */
-  
+
   /* Header Border */
   header {
     border-bottom: 2px solid #ccc; /* Light grey border under the header */
   }
-  
+
   /* Navbar Items Border */
   .navbar-nav .nav-item {
     border-right: 1px solid #ddd; /* Border for each item */
   }
-  
+
   /* Remove border from the last nav item */
   .navbar-nav .nav-item:last-child {
     border-right: none;
   }
-  
+
   /* Darker background for selected menu item */
   .nav-item.bg-dark .nav-link {
     background-color: #343a40 !important; /* Dark background color for selected item */
     color: white; /* White text for selected item */
   }
-  
+
   /* Style for dropdown menus */
   .nav-item .dropdown-menu {
     border-radius: 0; /* Remove rounded corners for a boxy look */
     box-shadow: none; /* Remove the default shadow */
   }
   </style>
-  

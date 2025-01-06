@@ -26,10 +26,18 @@
                 <!-- Link to the Sign-Up / Login page -->
                 <router-link to="/sign-up-login" class="dropdown-item">Sign Up / Login</router-link>
               </li>
-              <li><a class="dropdown-item" href="#">Special Offers</a></li>
-              <li><a class="dropdown-item" href="#">Latest News</a></li>
-              <li><a class="dropdown-item" href="#">Gift Cards</a></li>
-              <li><a class="dropdown-item" href="#">More</a></li>
+              <li>
+                <router-link to="/Poppy's_Promotions" class="dropdown-item" href="#">Special Offers</router-link>
+              </li>
+              <li>
+                <router-link to="/Latest_News" class="dropdown-item" href="#">Latest News</router-link>
+              </li>
+              <li>
+                <router-link to="/Gift-Cards" class="dropdown-item" href="#">Gift Cards</router-link>
+              </li>
+              <li>
+                <router-link to="/More" class="dropdown-item" href="#">More</router-link>
+              </li>
             </ul>
           </li>
 
@@ -116,7 +124,7 @@
                 <router-link to="/Search-Spots" class="dropdown-item" href="#">Search Spots</router-link>
               </li>
               <li>
-                <router-link to="/map" class="dropdown-item" >Interactive Map</router-link>
+                <router-link to="/Interactive-Map" class="dropdown-item" >Interactive Map</router-link>
               </li>
               <li><a class="dropdown-item" href="#">Poppy's Guide & Tips</a></li>
               <li>
@@ -134,8 +142,12 @@
             <ul v-if="selectedMenu === 'aboutUs'" class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Our Story</a></li>
               <li><a class="dropdown-item" href="#">Official Partners</a></li>
-              <li><a class="dropdown-item" href="#">Privacy Policy</a></li>
-              <li><a class="dropdown-item" href="#">Terms & Conditions</a></li>
+              <li>
+                <router-link to="/privacy-policy" class="dropdown-item" href="#">Privacy Policy</router-link>
+              </li>
+              <li>
+                <router-link to="/terms-and-conditions" class="dropdown-item" href="#">Terms & Conditions</router-link>
+              </li>
               <li><a class="dropdown-item" href="#">Merchandise</a></li>
             </ul>
           </li>
