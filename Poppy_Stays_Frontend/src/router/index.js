@@ -33,7 +33,10 @@ import PromotionsPage from '../view/Promotions.vue'; // import the PromotionsPag
 import TermsAndConditions from '../view/Terms_And_Conditions.vue'; // import the TermsAndconditions component
 import PrivacyPolicy from '../view/Privacy_Policy.vue'; // import the PrivacyPolicy component
 import LatestNews from '../view/Latest_news.vue'; // import the LatestNews Component
-import MorePage from '../view/More.vue'; // import the More page
+import MorePage from '../view/More.vue'; // import the More component
+import Poppys_Guide_And_Tips from "../View/Poppy's_Guide_And_Tips.vue"; // import the Poppys_Guide_And_Tips component
+import OurStory from '../view/Our_Story.vue'; // import the OurStory component
+import OfficialPartners from '../view/Official_Partners.vue'; // import the OfficialPartners component
 
 const routes = [
   {
@@ -249,6 +252,24 @@ const routes = [
         path: '/More',
         name: 'More',
         component: MorePage
+      },
+
+      {
+        path: "/Poppy's-Tips-&-Tricks",
+        name: "Poppy's Guide: Tips & Tricks",
+        component: Poppys_Guide_And_Tips
+      },
+
+      {
+        path: '/Our_Story',
+        name: "Our Story",
+        component: OurStory
+      },
+
+      {
+        path: "/Official-Partners",
+        name: "Official Partners",
+        component: OfficialPartners
       }
 
     ],

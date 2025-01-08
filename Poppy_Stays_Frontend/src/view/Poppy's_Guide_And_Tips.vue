@@ -1,33 +1,37 @@
 <template>
-  <div class="privacy-policy-container">
+  <div class="guide-container">
     <!-- Welcome message and introductory paragraph -->
-    <h1>Privacy Policy</h1>
+    <h1>Poppy's Guide: Tips & Tricks</h1>
     <p>
-      Your privacy is important to us at Poppy Stays. This Privacy Policy outlines the types of personal information we collect and how we use, store, and protect it. By using our services, you agree to the terms outlined in this policy.
+      Discover essential tips and tricks to make the most of your stay with Poppy Stays! Whether you're planning a camping adventure or a cozy BnB getaway, this guide has everything you need to ensure a seamless and enjoyable experience.
     </p>
 
-    <!-- Container for the download link (if needed) -->
+    <!-- Container for the download link -->
     <div class="download-container">
-      <!-- Button to download the Privacy Policy PDF file -->
-      <a href="/Public/Text_Files/Privacy_Policy/Privacy_Policy.pdf" download="Privacy_Policy.pdf" class="download-link">
-        Download Privacy Policy
+      <!-- Button to download the guide file -->
+      <a
+        href="/Public/Text_Files/Poppy's_Guide_And_Tips/Poppy's_Guide_And_Tips.pdf"
+        download="Poppy's_Guide_And_Tips.pdf"
+        class="download-link"
+      >
+        Download Poppy's Guide (PDF)
       </a>
     </div>
 
     <!-- Divider line to separate sections -->
     <hr class="divider" />
 
-    <!-- Privacy Policy Content Section -->
-    <div v-if="loading" class="loading-message">Loading Privacy Policy...</div>
+    <!-- Guide Content Section -->
+    <div v-if="loading" class="loading-message">Loading guide content...</div>
 
-    <!-- If no policy is available, display this message -->
+    <!-- If no guide content is available, display this message -->
     <div v-else>
-      <div v-if="privacyPolicyContent === ''" class="no-policy-message">
-        No Privacy Policy available at the moment.
+      <div v-if="guideContent === ''" class="no-guide-message">
+        No guide available at the moment.
       </div>
 
-      <!-- Display privacy policy content -->
-      <pre>{{ privacyPolicyContent }}</pre>
+      <!-- Display guide content -->
+      <pre>{{ guideContent }}</pre>
     </div>
 
     <!-- Another divider line before the CTA message -->
@@ -42,47 +46,49 @@
 import { ref, onMounted } from 'vue';
 
 export default {
-  name: 'PrivacyPolicyPage',
+  name: 'GuidePage',
   setup() {
-    const privacyPolicyContent = ref('');
+    const guideContent = ref('');
     const loading = ref(true);
 
-    const fetchPrivacyPolicy = async () => {
+    const fetchGuide = async () => {
       try {
-        // Fetch the Privacy Policy file content
-        const response = await fetch('/Public/Text_Files/Privacy_Policy/Privacy_Policy.txt');
+        // Fetch the guide file content
+        const response = await fetch(
+          "/Public/Text_Files/Poppy's_Guide_And_Tips/Poppy's_Guide_And_Tips.txt"
+        );
         if (response.ok) {
-          privacyPolicyContent.value = await response.text();
+          guideContent.value = await response.text();
         } else {
-          privacyPolicyContent.value = 'Failed to load Privacy Policy.';
+          guideContent.value = 'Failed to load the guide.';
         }
       } catch (error) {
-        privacyPolicyContent.value = 'Error loading Privacy Policy.';
+        guideContent.value = 'Error loading the guide.';
       } finally {
         loading.value = false;
       }
     };
 
     onMounted(() => {
-      fetchPrivacyPolicy();
+      fetchGuide();
     });
 
     return {
-      privacyPolicyContent,
-      loading
+      guideContent,
+      loading,
     };
-  }
+  },
 };
 </script>
 
 <style scoped>
-/* Styles for the Privacy Policy page container */
-.privacy-policy-container {
+/* Styles for the guide page container */
+.guide-container {
   padding: 20px;
   font-family: 'Courier New', Courier, monospace;
   background-color: #f1f1f1;
   color: #333;
-  text-align: left;
+  text-align: center;
 }
 
 h1 {
@@ -109,7 +115,7 @@ hr.divider {
   color: #95a5a6;
 }
 
-.no-policy-message {
+.no-guide-message {
   font-size: 1.2rem;
   color: #e74c3c;
 }

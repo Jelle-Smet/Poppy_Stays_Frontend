@@ -1,10 +1,14 @@
 <template>
   <div class="poppys-pick-container">
-    <h2>Poppy's Pick</h2>
-    <p class="intro-text">
-      Based on your recent bookings, Poppy has handpicked some of the most popular spots in your favorite categories. These top picks offer unique experiences and exceptional stays, perfect for your next adventure. Explore these featured spots and find your perfect getaway!
-    </p>
+    <!-- Intro Section Container -->
+    <div class="intro-container">
+      <h2>Poppy's Pick</h2>
+      <p class="intro-text">
+        Based on your recent bookings, Poppy has handpicked some of the most popular spots in your favorite categories. These top picks offer unique experiences and exceptional stays, perfect for your next adventure. Explore these featured spots and find your perfect getaway!
+      </p>
+    </div>
 
+    <!-- Loading, Error, or Spots Grid -->
     <div v-if="loading" class="loading">Loading spots...</div>
     <div v-if="error" class="error">{{ error }}</div>
 
@@ -124,18 +128,31 @@ export default {
   padding: 20px;
 }
 
+/* Intro Container Styling */
+.intro-container {
+  background-color: #f9f9f9; /* Light background */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: black;
+}
+
 .intro-text {
   font-size: 1.2em;
   color: #555;
-  margin-bottom: 20px;
+  margin: 10px 0 0;
 }
 
+/* Loading and Error Messages */
 .loading,
 .error {
   text-align: center;
   font-size: 1.2em;
   color: #555;
 }
+
 
 .spots-grid {
   display: grid;

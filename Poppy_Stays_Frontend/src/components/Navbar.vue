@@ -126,7 +126,9 @@
               <li>
                 <router-link to="/Interactive-Map" class="dropdown-item" >Interactive Map</router-link>
               </li>
-              <li><a class="dropdown-item" href="#">Poppy's Guide & Tips</a></li>
+              <li>
+                <router-link to="/Poppy's-Tips-&-Tricks" class="dropdown-item" href="#">Poppy's Guide: Tips & Tricks</router-link>
+              </li>
               <li>
                 <router-link to="/Poppys-Pick" class="dropdown-item" >Poppy's Pick</router-link>
               </li>
@@ -140,8 +142,12 @@
             </a>
             <!-- Sub-menu for About Us -->
             <ul v-if="selectedMenu === 'aboutUs'" class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Our Story</a></li>
-              <li><a class="dropdown-item" href="#">Official Partners</a></li>
+              <li>
+                <router-link to="/Our_Story" class="dropdown-item" href="#">Our Story</router-link>
+              </li>
+              <li>
+                <router-link to="/Official-Partners" class="dropdown-item" href="#">Official Partners</router-link>
+              </li>
               <li>
                 <router-link to="/privacy-policy" class="dropdown-item" href="#">Privacy Policy</router-link>
               </li>
@@ -157,6 +163,11 @@
             <a class="nav-link" href="#">Contact</a>
           </li>
         </div>
+        <!-- Logo: Positioned in the top left corner -->
+        <a class="extra space" href="#">
+          <!-- Image for the logo -->
+
+        </a>
       </div>
     </nav>
   </header>
@@ -192,8 +203,11 @@ export default {
   width: auto;
   z-index: 999;
   background-color: #1c1c1c; /* Dark background */
-  padding: 0;
-  border-bottom: 2px solid #fff; /* Border for the navbar */
+  padding: 0px;
+  border: 2px solid #fff; /* Border for the navbar */
+  border-radius: 5px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
 /* Logo styling */
