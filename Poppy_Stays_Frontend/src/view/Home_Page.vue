@@ -1,17 +1,32 @@
 <template>
   <div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <video autoplay muted loop playsinline class="background-video">
+        <source src="/public/videos/Home_Page_Video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-overlay">
+        <h1 class="hero-title">Welcome to Poppy Stays</h1>
+        <p class="hero-subtitle">Discover the perfect spot for your next adventure</p>
+        <router-link to="/all-spots">
+          <button class="cta-button">Start Exploring</button>
+        </router-link>
+      </div>
+    </section>
+
     <!-- Main Content -->
     <main class="content-container">
-      <h1 class="page-title">Welcome to Poppy Stays!</h1> <!-- Main page title -->
+      <h2 class="section-title">About Poppy Stays</h2>
       <p class="page-text">
-        {{ fileContent }}  <!-- Content from the file displayed here -->
+        {{ fileContent }} <!-- Content from the file displayed here -->
       </p>
     </main>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
 export default {
   setup() {
@@ -28,62 +43,106 @@ export default {
     });
 
     return {
-      fileContent,  // Expose the file content
+      fileContent,
     };
   },
 };
 </script>
 
 <style scoped>
-/* Layout and content container */
+/* Hero Section */
+.hero-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 60vh;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  border-radius: 8px; /* Makes the edges of the video rounded */
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for readability */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 2px 2px 5px #000;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.cta-button {
+  background-color: rgb(42, 79, 160);
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px #000;
+  transition: transform 0.2s ease-in-out;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+}
+
+/* Content Section */
 .content-container {
   width: 100%;
-  margin-top: 80px;
-  padding: 0 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;
-  min-height: 100vh; /* Ensure content takes full height */
+  background-color: #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.page-title {
-  font-size: 2.5rem;
+.section-title {
+  font-size: 2rem;
   font-weight: bold;
-  text-decoration: underline;
   text-align: center;
   margin-bottom: 20px;
-  width: 100%;
-  padding: 10px;
-  border: 2px solid #fff;
-  border-radius: 8px;
-  color: white;
-  background-color: #333;
+  color: #ddd;
+  text-decoration: underline;
 }
 
 .page-text {
   font-size: 1.25rem;
-  color: white;
   line-height: 1.6;
   width: 100%;
-  max-width: 100%;
+  color: #ddd;
+  text-align: justify;
   word-wrap: break-word;
-  overflow-wrap: break-word;
   white-space: pre-line;
-  margin: 0 auto;
-  word-break: break-word;
-  border: 2px solid #fff;
-  border-radius: 8px;
-  padding: 10px;
-  background-color: #444;
-}
-
-body {
-  width: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Make sure footer stays at the bottom */
 }
 </style>

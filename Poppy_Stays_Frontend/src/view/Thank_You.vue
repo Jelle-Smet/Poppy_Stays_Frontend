@@ -23,14 +23,18 @@
       </div>
     </div>
   </template>
-    
-  <script>
-    export default {
-      name: "ThankYouPage",
-    };
-  </script>
-    
-  <style scoped>
+
+<script>
+  export default {
+    name: "ThankYouPage",
+  };
+</script>
+
+<style scoped>
+
+  .mt-5{
+    padding-top: 15px;
+  }
   .card {
     background-color: #fff;
     border-radius: 10px;
@@ -38,16 +42,16 @@
     color: black;
     padding: 2rem; /* Increased padding inside the card */
   }
-  
+
   h1 {
     color: #28a745;
   }
-  
+
   .lead {
     font-size: 1.25rem;
     color: #495057;
   }
-  
+
   .btn-lg {
     padding: 15px 30px; /* Increased padding inside the button */
     border-radius: 8px; /* Rounded buttons for more space */
@@ -56,23 +60,22 @@
     transition: all 0.3s ease;
     border: none;
   }
-  
+
   .btn-primary {
     background-color: #007bff;
     color: white;
   }
-  
+
   .btn-primary:hover {
     background-color: #0056b3;
   }
-  
+
   .btn-secondary {
     background-color: #6c757d;
     color: white;
   }
-  
+
   .btn-secondary:hover {
     background-color: #5a6268;
   }
-  </style>
-  
+</style>

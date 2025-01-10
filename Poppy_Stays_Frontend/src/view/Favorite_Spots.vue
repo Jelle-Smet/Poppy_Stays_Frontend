@@ -77,8 +77,12 @@ export default {
       loading.value = true; // Start loading
       try {
         // Make an API call to fetch favorite spots based on the user's ID
-        const userId = 1; // Replace with the actual User_ID
-        const response = await axios.post('http://localhost:3000/api/spots-favorites', { userId });
+        const token = localStorage.getItem("authToken"); // Replace with the actual User_ID
+        const response = await axios.post('http://localhost:3000/api/spots-favorites', {}, {
+            headers: {
+                'Authorization': `Bearer ${token}` // Send the token as Bearer token
+            }
+        });
         // Map through the response data and add an index for image carousel
         spots.value = (response.data.spots || []).map((spot) => ({
           ...spot,

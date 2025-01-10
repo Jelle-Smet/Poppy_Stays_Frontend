@@ -55,16 +55,16 @@
               <li>
                 <router-link to="/upcoming_bookings" class="dropdown-item">My Bookings</router-link>
               </li>
-              <li>
-                <router-link to="/spot/favorite" class="dropdown-item">My Favorites</router-link>
-              </li>
+
               <li>
                 <router-link to="/past-cancelled-bookings" class="dropdown-item">My History</router-link>
               </li>
               <li>
+                <router-link to="/spot/favorite" class="dropdown-item">My Favorites</router-link>
+              </li>
+              <li>
                 <router-link to="/Notifications" class="dropdown-item" href="#">Notifications & Alerts</router-link>
               </li>
-              <li><a class="dropdown-item" href="#">Messages</a></li>
               <li>
                 <router-link to="/settings" class="dropdown-item" href="#">Settings</router-link>
               </li>
@@ -154,13 +154,15 @@
               <li>
                 <router-link to="/terms-and-conditions" class="dropdown-item" href="#">Terms & Conditions</router-link>
               </li>
-              <li><a class="dropdown-item" href="#">Merchandise</a></li>
+              <li>
+                <router-link to="/Merchandise" class="dropdown-item" href="#">Merchandise</router-link>
+                </li>
             </ul>
           </li>
 
           <!-- Contact category -->
           <li class="nav-item category">
-            <a class="nav-link" href="#">Contact</a>
+            <router-link to="/Contact" class="nav-link" href="#">Contact</router-link>
           </li>
         </div>
         <!-- Logo: Positioned in the top left corner -->

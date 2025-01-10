@@ -205,7 +205,7 @@ img {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 8px; /* Optional: To add rounded corners */
+  border-radius: 8px; /*To add rounded corners */
 }
 
 .container {
@@ -213,26 +213,32 @@ img {
   min-height: 100vh;
   color: black;
   border-radius: 12px; /* Smooth edges */
+  text-align: center;
 }
 
 .warning-card {
   background: white;
   border-radius: 12px;
+  border: 2px solid rgb(75, 73, 73); /* Add a border */
   padding: 30px;
   max-width: 600px;
   width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
   color: black;
+  margin: 20px; /* Add space between cards */
 }
+
 
 h1 {
   color: #333;
+  border-bottom: 2px solid rgb(75,73,73);
 }
 
 .button-group {
   display: flex;
   gap: 15px;
   margin-top: 20px;
+
 }
 
 .view-details-button,

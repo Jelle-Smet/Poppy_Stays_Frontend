@@ -2,6 +2,15 @@
   <div class="settings-container">
     <h2>Account Settings</h2>
     <p>Manage your account settings, including email, password, and personal information.</p>
+    <!-- Display User's Current Info -->
+    <div class="user-info">
+      <h4>Personal Information</h4>
+      <p><strong>First Name:</strong> {{ userInfo.firstName }}</p>
+      <p><strong>Last Name:</strong> {{ userInfo.lastName }}</p>
+      <p><strong>Phone Number:</strong> {{ phoneNumber }}</p>
+      <p><strong>Email:</strong> {{ email }}</p>
+      <p><strong>Address:</strong> {{ address }}</p>
+    </div>
 
     <!-- Update Email -->
     <div class="update-email">
@@ -199,6 +208,12 @@ export default {
 </script>
 
 <style scoped>
+.user-info{
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 5px;
+}
+
 .settings-container {
   max-width: 600px;
   margin: 20px auto;

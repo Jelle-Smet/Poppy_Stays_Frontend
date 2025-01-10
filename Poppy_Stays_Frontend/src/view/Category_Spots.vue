@@ -174,6 +174,10 @@ export default {
         return;
       }
 
+      // Clear previous spots and error state
+      spots.value = [];
+      error.value = null;
+
       loading.value = true;
       const categoryIds = selectedCategories.value.map(c => c.Spot_Category_ID);
 
@@ -187,6 +191,11 @@ export default {
           ...spot,
           currentImageIndex: 0, // Start with the first image
         }));
+
+        // Handle if no spots are found
+        if (spots.value.length === 0) {
+          error.value = "No spots found for the selected categories.";
+        }
       } catch (err) {
         console.error('Error fetching spots:', err);
         error.value = "Failed to load spots. Please try again later.";

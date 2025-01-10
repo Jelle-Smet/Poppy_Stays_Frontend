@@ -27,7 +27,7 @@ html, body {
   flex-direction: column;
   overflow-x: hidden;
   font-family: 'Arial', sans-serif; /* Clean modern font */
-  z-index: 0;
+  z-index: -1;
 }
 
 /* Full page background with dark grey color */
@@ -39,7 +39,7 @@ body::before {
   width: 1000%; /* Full width */
   height: 1000%; /* Full height */
   background-color: darkgrey; /* Dark grey color behind the triangles */
-  z-index: -2; /* Place it behind content */
+  z-index: -3; /* Place it behind content */
   filter: blur(2px);
 }
 
@@ -57,7 +57,7 @@ body::after {
     linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%) 50px 0;
   background-size: 100px 100px; /* Adjust this for the size of the triangles */
   opacity: 0.2;
-  z-index: -1; /* Ensure this stays behind content */
+  z-index: -2; /* Ensure this stays behind content */
 }
 
 /* Logo overlay that stays in front of the background but behind the content */
@@ -74,6 +74,6 @@ body::before {
   background-position: center;
   background-size: contain;
   opacity: 0.3; /* Subtle logo effect */
-  z-index: -1; /* Ensure the logo is in front of the background but behind the content */
+  z-index: -2; /* Ensure the logo is in front of the background but behind the content */
 }
 </style>

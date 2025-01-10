@@ -286,7 +286,7 @@ export default {
       if (!promoCode.value) return;
 
       try {
-        const response = await axiosWithAuth.post('/api/check-promo-or-giftcard', {
+        const response = await axiosWithAuth.post('http://localhost:3000/api/check-promo-or-giftcard', {
           code: promoCode.value
         });
 
@@ -330,7 +330,10 @@ export default {
           endDate: endDate.value,
           totalAmount: total.value,
           paymentId: paymentId,
-          promotionId: appliedPromotion.value?.id || null,
+          // Only set promotionId if it's actually a promotion, not a gift card
+          promotionId: appliedPromotion.value?.type === 'Percentage' || appliedPromotion.value?.type === 'Fixed'
+            ? appliedPromotion.value.id
+            : null,
         };
 
         await axiosWithAuth.post('/api/create-booking', bookingDetails);

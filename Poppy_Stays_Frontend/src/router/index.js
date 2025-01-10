@@ -37,6 +37,8 @@ import MorePage from '../view/More.vue'; // import the More component
 import Poppys_Guide_And_Tips from "../View/Poppy's_Guide_And_Tips.vue"; // import the Poppys_Guide_And_Tips component
 import OurStory from '../view/Our_Story.vue'; // import the OurStory component
 import OfficialPartners from '../view/Official_Partners.vue'; // import the OfficialPartners component
+import ContactUspage from '../view/Contact.vue'; // import the ContactUspage component
+import MerchandisePage from '../view/merchandise.vue'; // import the MerchandisePage component
 
 const routes = [
   {
@@ -270,6 +272,18 @@ const routes = [
         path: "/Official-Partners",
         name: "Official Partners",
         component: OfficialPartners
+      },
+
+      {
+        path: '/Contact',
+        name: 'Contact',
+        component: ContactUspage
+      },
+
+      {
+        path: '/Merchandise',
+        name: 'Merchandise',
+        component: MerchandisePage
       }
 
     ],

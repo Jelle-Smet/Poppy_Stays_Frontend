@@ -75,6 +75,9 @@ export default {
 
 <style scoped>
 .gift-cards-container {
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 50px;
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -82,6 +85,7 @@ export default {
 
 .page-title {
   text-align: center;
+  border-bottom: 2px solid black;
   color: #2d3748;
   margin-bottom: 2rem;
   font-size: 2.5rem;
@@ -96,6 +100,7 @@ export default {
 .card {
   background: white;
   border-radius: 8px;
+  border: 2px solid black;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   overflow: hidden;
   transition: transform 0.2s;

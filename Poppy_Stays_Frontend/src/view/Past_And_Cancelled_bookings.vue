@@ -3,7 +3,7 @@
     <!-- Header Section -->
     <header class="mb-10">
       <h1 class="text-3xl font-semibold text-gray-800">Past and Cancelled Bookings</h1>
-      <p class="mt-2 text-gray-600">View your completed or cancelled bookings</p>
+      <p class="mt-2 text-gray-600">View your completed or cancelled bookings </p>
     </header>
 
     <!-- Loading State -->
@@ -306,20 +306,30 @@ img {
   min-height: 100vh;
   color: black;
   border-radius: 12px;
+  text-align: center;
 }
 
 .warning-card {
   background: white;
   border-radius: 12px;
+  border: 2px solid rgb(75, 73, 73); /* Add a border */
   padding: 30px;
   max-width: 600px;
   width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
   color: black;
+  margin: 20px; /* Add space between cards */
 }
 
 h1 {
   color: #333;
+  border-bottom: 2px solid rgb(75,73,73);
+}
+
+h2 {
+  color: #333;
+  border-bottom: 2px solid rgb(75,73,73);
+  border-top: 2px solid rgb(75,73,73);
 }
 
 .add-review-button {

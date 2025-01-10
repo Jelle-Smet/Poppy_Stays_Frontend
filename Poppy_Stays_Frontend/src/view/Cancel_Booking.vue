@@ -112,12 +112,12 @@ export default {
 
     // Function to navigate back to the bookings overview page
     const goBack = () => {
-      router.push("/booking/overview");
+      router.push("/upcoming_bookings");
     };
 
     // Function to return to the user's bookings page
     const returnToBookings = () => {
-      router.push("/my-bookings");
+      router.push("/upcoming_bookings");
     };
 
     return {
