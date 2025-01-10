@@ -51,20 +51,21 @@ To get started with the frontend:
 # Project Structure
 The project follows a standard Vue.js structure:
 
-- **src/components:** Contains reusable Vue components.
-- **src/views:** Contains page-level components such as Home, Login, and Profile.
+- **src/components:** Contains reusable Vue components like the navigation bar, header, and footer.
+- **src/view:** Contains actual page-level components such as Home, Login, and Profile.
 - **src/router:** Manages the application’s routing.
 - **src/store:** Handles state management for the application (if used).
 
 # Features
 - **Dynamic Menus:** Implemented with a top menu including Home, Account, Spots, About Us, and Contact sections.
 - **Shared Layouts:** Consistent layout across pages using a shared MainLayout component.
+- **Reusable Components:** Common UI elements like the navigation bar can be found in the `src/components` folder.
 - **Responsive Design:** Optimized for various screen sizes and devices.
 - **Promotions Display:** A dedicated page showcasing current promotions.
 
 # Notes
 - The project uses **Bootstrap** for styling and **Vue Router** for handling page navigation.
-- Pages are located in the `src/views` folder and are linked via the router.
+- Pages are located in the `src/view` folder and are linked via the router.
 - The application is built with **Vue.js 3**, which introduces the Composition API for better state and logic management.
 
 # Contributing
